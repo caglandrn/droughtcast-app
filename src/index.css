@@ -1,0 +1,152 @@
+/* -----------------------------------------------------
+   Global brand + data-viz palette  (UPDATED)
+----------------------------------------------------- */
+
+:root {
+  /* brand & UI */
+  --color-bg-main:      #2C3E50; /* ana zemin – soft slate blue */
+  --color-bg-alt:       #ECF0F1; /* alt sayfa arka planı – light gray */
+  --color-heading:  #ECF0F1; /* new light grey – high contrast */
+  --color-accent-1:     #1ABC9C; /* vurgu (buton, link, hover) – teal */
+  --color-accent-2:     #F39C12; /* ikincil vurgu (grafik/etiket) – soft amber */
+  --color-warning:      #E67E22; /* uyarı rengi – deep orange */
+
+  /* risk-tag colours (isteğe bağlı hâlen aynı) */
+  --risk-safe-bg:  #D4EFE4;  --risk-safe-text:  #157347;
+  --risk-mod-bg:   #FFF3CC;  --risk-mod-text:   #946200;
+  --risk-high-bg:  #FFE4CF;  --risk-high-text:  #B35A00;
+  --risk-crit-bg:  #FFD6D6;  --risk-crit-text:  #A30000;
+
+  /* typography & layout */
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* -----------------------------------------------------
+   Global element reset / defaults
+----------------------------------------------------- */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--color-bg-main);  /* yeni ana zemin */
+  color: var(--color-bg-alt);        /* açık metin rengi */
+  font-family: inherit;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.4em;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-heading);       /* yeni başlık rengi */
+}
+h1 { font-size: 2.4rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.25rem; }
+
+/* Links */
+a {
+  color: var(--color-accent-1);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.25s;
+}
+a:hover       { color: var(--color-accent-2); }
+a:focus       { outline: 2px solid var(--color-accent-1); }
+a:active      { color: var(--color-accent-2); }
+
+/* Buttons */
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6em 1.4em;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: #fff;
+  background: var(--color-accent-1);          /* teal */
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s;
+}
+button:hover          { background: var(--color-accent-2); } /* amber */
+button:focus-visible  { outline: 4px auto var(--color-accent-2); }
+
+/* Navigation bar */
+nav {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-heading);  /* koyu başlık rengi */
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+nav a {
+  margin-right: 1rem;
+  color: var(--color-bg-alt);        /* açık gri/beyaz metin */
+}
+nav a:hover { text-decoration: underline; }
+
+/* ----------------------------------------------
+   Text on white cards / panels
+---------------------------------------------- */
+.info-panel,
+.info-panel h3 {
+  color: #34495E;   /* dark, high-contrast */
+}
+
+/* -----------------------------------------------------
+   Turkey map container tweaks
+----------------------------------------------------- */
+.svg-turkiye-haritasi {
+  max-width: 100%;
+  padding: 50px 20px;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--color-bg-alt);   /* alt sayfa arka planı */
+  border-radius: 12px;
+}
+
+/* province paths inside map */
+#svg-turkiye-haritasi path {
+  cursor: pointer;
+  fill: var(--color-accent-1);
+  opacity: 0.85;
+  transition: fill 0.2s, opacity 0.2s;
+}
+#svg-turkiye-haritasi path:hover,
+#svg-turkiye-haritasi path.selected {
+  fill: var(--color-accent-2);
+  opacity: 1;
+}
+#svg-turkiye-haritasi path.selected {
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+/* Cyprus remains inert */
+#guney-kibris { pointer-events: none; }
+
+/* -----------------------------------------------------
+   Light-mode / dark-mode hooks (optional)
+----------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    background-color: #182635;
+    color: #e6eaf3;
+  }
+  a       { color: #1ABC9C; }
+  a:hover { color: #F39C12; }
+  button  { background: var(--color-accent-2); }
+  button:hover { background: var(--color-accent-1); }
+}

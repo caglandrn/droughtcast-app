@@ -1,0 +1,59 @@
+/* -----------------------------------------------------
+   Map-specific palette  (UPDATED)
+----------------------------------------------------- */
+
+:root {
+  --color-accent-1: #1ABC9C; /* teal – default fill */
+  --color-accent-2: #F39C12; /* amber – hover/selected */
+
+  --risk-safe-bg:    #D4EFE4;
+  --risk-mod-bg:     #FFF3CC;
+  --risk-high-bg:    #FFE4CF;
+  --risk-crit-bg:    #FFD6D6;
+
+  --risk-safe-text:  #157347;
+  --risk-mod-text:   #946200;
+  --risk-high-text:  #B35A00;
+  --risk-crit-text:  #A30000;
+}
+
+/* overall page background keeps main slate */
+body { background: #2C3E50; color: #ECF0F1; }
+
+/* map container */
+.svg-turkiye-haritasi {
+  max-width: 100%;
+  padding: 50px 20px;
+  margin: 0 auto;
+  text-align: center;
+  background: #ECF0F1;          /* alt sayfa arka planı */
+  border-radius: 12px;
+}
+
+/* the map itself */
+.svg-turkiye-haritasi svg {
+  width: 100%;
+  height: auto;
+}
+
+/* default province fill */
+#svg-turkiye-haritasi path {
+  cursor: pointer;
+  fill: var(--color-accent-1);
+  opacity: 0.85;
+  transition: fill 0.25s;
+}
+
+/* hover & selected state */
+#svg-turkiye-haritasi path:hover,
+#svg-turkiye-haritasi path.selected {
+  fill: var(--color-accent-2);
+  opacity: 1;
+}
+#svg-turkiye-haritasi path.selected {
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+/* Cyprus inert */
+#guney-kibris { pointer-events: none; }
